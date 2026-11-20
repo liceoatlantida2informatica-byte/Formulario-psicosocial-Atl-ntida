@@ -1,5 +1,5 @@
 /* Configure la URL de implementación de Google Apps Script en GAS_URL. */
-const GAS_URL = "PEGAR_AQUI_URL_DE_IMPLEMENTACION_APPS_SCRIPT";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbxHocQrkegi_StwZFrM4-QjUDSKTb6FWqs7RpURbuGXVQDJJ7qbRjZjgSBrGHfHa3_dSA/exec";
 const form = document.getElementById("familyForm");
 const modules = [...document.querySelectorAll(".module")];
 const stepDots = [...document.querySelectorAll(".step-dot")];
