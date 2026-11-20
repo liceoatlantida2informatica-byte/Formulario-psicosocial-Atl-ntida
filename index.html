@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b5e">
+  <title>Ficha Psicosocial 2027 | Liceo Atlántida 2</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="brand-mark">LA2</div>
+  <div><p class="eyebrow">Liceo Atlántida 2</p><h1>Ficha Psicosocial</h1><p class="subhead">Año lectivo 2027 · Formulario para familias</p></div>
+</header>
+<main class="container">
+  <section class="intro card">
+    <h2>Información del/de la estudiante</h2>
+    <p>Complete los cinco módulos. Los campos pueden completarse desde un celular o una computadora. Antes de enviar podrá revisar la información.</p>
+    <p class="notice">La ficha corresponde a un/a estudiante. Si tiene más de un hijo o hija en el liceo, complete un formulario independiente para cada uno/a.</p>
+  </section>
+
+  <div class="progress-wrap" aria-live="polite">
+    <div class="progress-label"><span id="stepLabel">Módulo 1 de 5</span><span id="progressPercent">20 %</span></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <nav class="step-nav" aria-label="Módulos del formulario">
+      <button type="button" class="step-dot active" data-go="0">1</button><button type="button" class="step-dot" data-go="1">2</button><button type="button" class="step-dot" data-go="2">3</button><button type="button" class="step-dot" data-go="3">4</button><button type="button" class="step-dot" data-go="4">5</button>
+    </nav>
+  </div>
+
+  <form id="familyForm" novalidate>
+    <section class="module card active" data-module="0">
+      <div class="module-heading"><span class="module-number">01</span><div><p class="eyebrow">Módulo 1</p><h2>Datos generales del/de la estudiante</h2></div></div>
+      <div class="grid two">
+        <label class="field">Nombres y apellidos completos <input name="studentName" autocomplete="name" required></label>
+        <label class="field">Cédula de identidad (C.I.) <input name="ci" inputmode="numeric" autocomplete="off" required maxlength="12" placeholder="Sin puntos ni guiones"></label>
+        <label class="field">Grado / Grupo <input name="gradeGroup" placeholder="Ej.: 1.º 2"></label>
+        <label class="field">Turno <input name="shift" placeholder="Ej.: matutino"></label>
+        <label class="field">Procedencia (centro educativo) <input name="originSchool"></label>
+        <label class="field">Fecha de nacimiento <input name="birthDate" type="date"></label>
+        <label class="field">Edad al ingreso <input name="age" type="number" min="10" max="25"></label>
+        <fieldset class="field"><legend>Carné de salud / adolescente</legend><div class="choice-row"><label><input type="radio" name="healthCard" value="Sí"> Sí</label><label><input type="radio" name="healthCard" value="No"> No</label><label><input type="radio" name="healthCard" value="Vencido"> Vencido</label></div><label class="subfield">Fecha de vencimiento <input name="healthCardExpiry" type="date"></label></fieldset>
+        <fieldset class="field"><legend>Esquema de vacunación vigente</legend><div class="choice-row"><label><input type="radio" name="vaccination" value="Sí"> Sí</label><label><input type="radio" name="vaccination" value="No"> No</label><label><input type="radio" name="vaccination" value="Vencido"> Vencido</label></div><label class="subfield">Fecha / observación <input name="vaccinationDate" type="text"></label></fieldset>
+        <label class="field">Domicilio (calle, número / manzana y solar / km) <input name="address" autocomplete="street-address"></label>
+        <label class="field">Barrio <input name="neighborhood"></label>
+        <label class="field">Localidad / Departamento <input name="locality"></label>
+        <label class="field">Teléfono fijo <input name="landline" inputmode="tel"></label>
+        <label class="field">Celular madre / tutora <input name="motherPhone" inputmode="tel"></label>
+        <label class="field">Celular padre / tutor <input name="fatherPhone" inputmode="tel"></label>
+        <label class="field">Otro adulto referente (nombre y teléfono) <input name="otherAdult"></label>
+        <fieldset class="field"><legend>Medio de traslado al liceo</legend><div class="check-grid">
+          <label><input type="checkbox" name="transport" value="A pie"> A pie</label><label><input type="checkbox" name="transport" value="Bicicleta"> Bicicleta</label><label><input type="checkbox" name="transport" value="Ómnibus"> Ómnibus</label><label><input type="checkbox" name="transport" value="Auto particular"> Auto particular</label><label><input type="checkbox" name="transport" value="Otro"> Otro</label></div><label class="subfield">Especifique si corresponde <input name="transportOther"></label></fieldset>
+        <label class="field">Distancia aproximada al liceo <input name="distance" placeholder="Ej.: 2 km / 15 minutos"></label>
+      </div>
+    </section>
+
+    <section class="module card" data-module="1">
+      <div class="module-heading"><span class="module-number">02</span><div><p class="eyebrow">Módulo 2</p><h2>Composición y dinámica familiar</h2></div></div>
+      <p class="help">Registre a todas las personas que conviven bajo el mismo techo, incluyendo al/a la estudiante.</p>
+      <div id="familyMembers" class="repeat-list"></div>
+      <button type="button" class="button secondary" id="addMember">＋ Agregar integrante</button>
+      <hr>
+      <h3>Padre / madre que NO convive</h3>
+      <div class="grid two">
+        <label class="field">Nombre y apellido <input name="nonResidentName"></label>
+        <label class="field">Ocupación <input name="nonResidentOccupation"></label>
+        <label class="field">Teléfono / celular <input name="nonResidentPhone" inputmode="tel"></label>
+        <label class="field">Frecuencia de contacto con el/la estudiante <input name="contactFrequency"></label>
+        <fieldset class="field"><legend>Pensión alimenticia</legend><div class="choice-row"><label><input type="radio" name="alimony" value="Sí"> Sí</label><label><input type="radio" name="alimony" value="No"> No</label></div></fieldset>
+        <fieldset class="field"><legend>Tenencia legal</legend><div class="choice-row"><label><input type="radio" name="custody" value="Sí"> Sí</label><label><input type="radio" name="custody" value="No"> No</label></div></fieldset>
+        <fieldset class="field"><legend>¿Existe resolución judicial?</legend><div class="choice-row"><label><input type="radio" name="courtOrder" value="Sí"> Sí</label><label><input type="radio" name="courtOrder" value="No"> No</label></div><label class="subfield">Especificar <input name="courtOrderDetails"></label></fieldset>
+      </div>
+      <label class="field">Otros datos relevantes del núcleo familiar (mudanzas recientes, separaciones, duelos, situaciones de violencia, etc.) <textarea name="familyNotes" rows="4"></textarea></label>
+    </section>
+
+    <section class="module card" data-module="2">
+      <div class="module-heading"><span class="module-number">03</span><div><p class="eyebrow">Módulo 3</p><h2>Situación socioeconómica y prestaciones sociales</h2></div></div>
+      <div class="grid two">
+        <fieldset class="field"><legend>Asignación Familiar (AFAM - BPS)</legend><div class="choice-row"><label><input type="radio" name="afam" value="Sí"> Sí</label><label><input type="radio" name="afam" value="No"> No</label></div></fieldset>
+        <fieldset class="field"><legend>Tarjeta Uruguay Social (TUS - MIDES)</legend><div class="choice-row"><label><input type="radio" name="tus" value="Sí"> Sí</label><label><input type="radio" name="tus" value="No"> No</label></div></fieldset>
+        <fieldset class="field"><legend>Ayuda especial BPS (apoyo pedagógico / psicológico)</legend><div class="choice-row"><label><input type="radio" name="bpsAid" value="Sí"> Sí</label><label><input type="radio" name="bpsAid" value="No"> No</label></div></fieldset>
+        <fieldset class="field"><legend>Situación de la vivienda</legend><div class="check-grid"><label><input type="checkbox" name="housing" value="Propietario"> Propietario</label><label><input type="checkbox" name="housing" value="Inquilino"> Inquilino</label><label><input type="checkbox" name="housing" value="Agregado"> Agregado</label><label><input type="checkbox" name="housing" value="Irregular"> Irregular</label></div></fieldset>
+        <label class="field">Otras prestaciones o becas <textarea name="otherBenefits" rows="3"></textarea></label>
+      </div>
+      <label class="field">Observaciones sobre la situación socioeconómica <textarea name="economicNotes" rows="4"></textarea></label>
+    </section>
+
+    <section class="module card" data-module="3">
+      <div class="module-heading"><span class="module-number">04</span><div><p class="eyebrow">Módulo 4</p><h2>Salud física, salud mental y hábitos</h2></div></div>
+      <div class="grid two">
+        <fieldset class="field"><legend>Cobertura médica</legend><div class="choice-row"><label><input type="radio" name="medicalCoverage" value="ASSE"> ASSE</label><label><input type="radio" name="medicalCoverage" value="Mutualista"> Mutualista</label></div></fieldset>
+        <label class="field">Institución / centro de salud / médico referente <input name="healthProvider"></label>
+        <label class="field">Emergencia móvil <input name="mobileEmergency"></label>
+        <label class="field">Enfermedades crónicas, alergias o condiciones médicas relevantes <textarea name="conditions" rows="3"></textarea></label>
+        <fieldset class="field"><legend>¿Tuvo intervenciones quirúrgicas?</legend><div class="choice-row"><label><input type="radio" name="surgery" value="Sí"> Sí</label><label><input type="radio" name="surgery" value="No"> No</label></div><label class="subfield">¿A qué edad / motivo? <input name="surgeryDetails"></label></fieldset>
+        <fieldset class="field"><legend>¿Toma medicación regular?</legend><div class="choice-row"><label><input type="radio" name="medication" value="Sí"> Sí</label><label><input type="radio" name="medication" value="No"> No</label></div><label class="subfield">Nombre, dosis y horario <textarea name="medicationDetails" rows="2"></textarea></label></fieldset>
+        <label class="field">Contacto de urgencia (nombre y celular) <input name="emergencyContact"></label>
+        <label class="field">Hábitos de sueño (horas por noche) <input name="sleep"></label>
+        <label class="field">Hábitos de alimentación <textarea name="eating" rows="2"></textarea></label>
+        <label class="field">Horas de pantalla / celular por día <input name="screenTime"></label>
+        <label class="field">Diagnósticos psicológicos, psicopedagógicos o psiquiátricos previos / actuales <textarea name="diagnoses" rows="3"></textarea></label>
+        <label class="field">Tratamiento actual y profesional tratante <textarea name="treatment" rows="3"></textarea></label>
+      </div>
+      <label class="field">¿Ha atravesado situaciones de crisis emocional, autolesiones o ideación suicida? (detallar si corresponde) <textarea name="crisis" rows="4"></textarea></label>
+      <p class="help">Si necesita comunicar una situación urgente, no espere a completar este formulario: comuníquese directamente con el liceo o con los servicios de emergencia correspondientes.</p>
+    </section>
+
+    <section class="module card" data-module="4">
+      <div class="module-heading"><span class="module-number">05</span><div><p class="eyebrow">Módulo 5</p><h2>Trayectoria educativa previa y actividades extracurriculares</h2></div></div>
+      <div class="grid two">
+        <label class="field">Última escuela o liceo de procedencia <input name="lastSchool"></label>
+        <label class="field">Último grado aprobado / nota <input name="lastGrade"></label>
+        <label class="field">Asignaturas previas a acreditar (si aplica) <textarea name="pendingSubjects" rows="2"></textarea></label>
+        <fieldset class="field"><legend>¿Repitió algún año escolar o liceal?</legend><div class="choice-row"><label><input type="radio" name="repeated" value="Sí"> Sí</label><label><input type="radio" name="repeated" value="No"> No</label></div><label class="subfield">¿Cuál/es? <input name="repeatedWhich"></label></fieldset>
+        <label class="field">Motivo de la repetición o cambios de centro educativo <textarea name="repeatReason" rows="3"></textarea></label>
+        <label class="field">Observaciones previas en convivencia / conducta escolar o vínculos con pares y docentes <textarea name="schoolObservations" rows="3"></textarea></label>
+      </div>
+      <fieldset class="field"><legend>Áreas donde presentó dificultades previas (marcar las que correspondan)</legend><div class="check-grid">
+        <label><input type="checkbox" name="difficulties" value="Lectura"> Lectura</label><label><input type="checkbox" name="difficulties" value="Comprensión de textos"> Comprensión de textos</label><label><input type="checkbox" name="difficulties" value="Escritura"> Escritura</label><label><input type="checkbox" name="difficulties" value="Cálculo / razonamiento"> Cálculo / razonamiento</label><label><input type="checkbox" name="difficulties" value="Atención / organización"> Atención / organización</label><label><input type="checkbox" name="difficulties" value="Integración / conducta"> Integración / conducta</label></div></fieldset>
+      <label class="field">Apoyos profesionales recibidos (psicopedagogo, maestra de apoyo, fonoaudiólogo, psicomotricista, institución y duración) <textarea name="professionalSupport" rows="3"></textarea></label>
+      <fieldset class="field"><legend>¿Posee informes técnicos?</legend><div class="choice-row"><label><input type="radio" name="reports" value="Sí"> Sí</label><label><input type="radio" name="reports" value="No"> No</label></div><p class="help">Si corresponde, consulte con el liceo cómo presentar una copia.</p></fieldset>
+      <h3>Actividades extracurriculares e intereses</h3>
+      <div class="grid three">
+        <label class="field">Deportivas <input name="sports"></label><label class="field">Artísticas / culturales <input name="arts"></label><label class="field">Idiomas / otras <input name="languages"></label>
+      </div>
+      <h3>Trayectoria educativa de años anteriores</h3>
+      <p class="help">Complete los años que correspondan.</p>
+      <div id="schoolYears" class="year-grid"></div>
+      <label class="field">Otras observaciones que considere importantes <textarea name="finalNotes" rows="4"></textarea></label>
+      <div class="consent-box">
+        <label class="check-consent"><input type="checkbox" name="declaration" required> Declaro que la información proporcionada es correcta según mi leal saber y entender, y que estoy autorizado/a para proporcionarla en relación con el/la estudiante.</label>
+      </div>
+    </section>
+
+    <section class="module card" data-module="5">
+      <div class="module-heading"><span class="module-number">✓</span><div><p class="eyebrow">Último paso</p><h2>Revisar y enviar</h2></div></div>
+      <p>Revise que los datos estén completos y sean correctos. Al confirmar, la ficha se enviará de forma definitiva.</p>
+      <div id="reviewSummary" class="review-summary"></div>
+      <div class="warning"><strong>Importante:</strong> cada estudiante puede tener una sola ficha. Una vez enviada, no se podrá modificar ni volver a enviar con la misma C.I.</div>
+      <label class="field">Escriba nuevamente la C.I. del/de la estudiante para confirmar <input id="confirmCi" inputmode="numeric" autocomplete="off" required></label>
+      <div class="honeypot" aria-hidden="true"><label>No completar <input name="website" tabindex="-1" autocomplete="off"></label></div>
+    </section>
+
+    <div class="form-actions">
+      <button type="button" class="button secondary" id="prevBtn" disabled>← Anterior</button>
+      <button type="button" class="button primary" id="nextBtn">Siguiente →</button>
+      <button type="submit" class="button primary hidden" id="submitBtn">Enviar ficha definitivamente</button>
+    </div>
+  </form>
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+  <iframe name="submitFrame" id="submitFrame" class="hidden-frame" title="Resultado del envío"></iframe>
+</main>
+<footer><p>Liceo Atlántida 2 · Ficha Psicosocial 2027</p><p>Los datos serán utilizados por el personal autorizado del centro educativo para los fines institucionales correspondientes.</p></footer>
+
+<template id="memberTemplate">
+  <article class="repeat-card">
+    <div class="repeat-title"><strong>Integrante del hogar</strong><button type="button" class="remove-button">Quitar</button></div>
+    <div class="grid two">
+      <label class="field">Nombre y apellido <input data-key="name"></label>
+      <label class="field">Parentesco <input data-key="relationship"></label>
+      <label class="field">C.I. (si corresponde) <input data-key="ci"></label>
+      <label class="field">Edad <input data-key="age" type="number" min="0" max="120"></label>
+      <label class="field">Último nivel de estudios <input data-key="education"></label>
+      <label class="field">Ocupación y horario laboral <input data-key="occupation"></label>
+    </div>
+  </article>
+</template>
+<script src="formulario.js"></script>
+</body>
+</html>
