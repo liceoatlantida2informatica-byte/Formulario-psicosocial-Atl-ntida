@@ -122,4 +122,22 @@ form.addEventListener("submit",e=>{
       window.scrollTo({top:0,behavior:"smooth"});
     }
   },5000);
+});
+
+["birthDate", "healthCardExpiry"].forEach((fieldName) => {
+  const input = form.elements[fieldName];
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+    const digits = input.value.replace(/\D/g, "").slice(0, 8);
+    let formatted = digits;
+    if (digits.length > 4) {
+      formatted = `${digits.slice(0, 2)}-${digits.slice(2, 4)}-${digits.slice(4)}`;
+    } else if (digits.length > 2) {
+      formatted = `${digits.slice(0, 2)}-${digits.slice(2)}`;
+    }
+    input.value = formatted;
+  });
+});
+
 goTo(0);
