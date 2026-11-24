@@ -83,6 +83,7 @@ function buildReview(){
 function onMessage(event){
   if(event.origin!=="https://script.google.com"&&event.origin!=="https://script.googleusercontent.com")return;
   if(!event.data||event.data.type!=="ficha-psicosocial-result")return;
+  if(window._submitTimer){clearTimeout(window._submitTimer);window._submitTimer=null;}
   submitting=false;submitBtn.disabled=false;submitBtn.textContent="Enviar ficha definitivamente";
   if(event.data.ok){
     form.reset();document.getElementById("familyMembers").innerHTML="";addMember();
@@ -110,6 +111,7 @@ form.addEventListener("submit",e=>{
   form.action=GAS_URL;form.method="POST";form.enctype="application/x-www-form-urlencoded";form.target="submitFrame";
   form.submit();
   showStatus("Enviando la ficha. No cierre esta ventana hasta recibir la confirmación.","info");
-  setTimeout(()=>{if(submitting){submitting=false;submitBtn.disabled=false;submitBtn.textContent="Enviar ficha definitivamente";showStatus("No llegó la confirmación del servidor. Verifique su conexión y, antes de volver a intentar, comuníquese con el liceo para comprobar si la ficha fue recibida.","error");}},30000);
+  if(window._submitTimer)clearTimeout(window._submitTimer);
+  window._submitTimer=setTimeout(()=>{if(submitting){submitting=false;submitBtn.disabled=false;submitBtn.textContent="Enviar ficha definitivamente";showStatus("La respuesta del servidor tardó demasiado o no llegó la confirmación. Revise su conexión o consulte en la hoja de respuestas antes de reenviar.","error");}},45000);
 });
 goTo(0);
