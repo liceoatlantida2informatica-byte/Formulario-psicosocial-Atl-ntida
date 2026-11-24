@@ -36,9 +36,9 @@
         <label class="field">Grado / Grupo <input name="gradeGroup" placeholder="Ej.: 1.º 2"></label>
         <label class="field">Turno <input name="shift" placeholder="Ej.: matutino"></label>
         <label class="field">Procedencia (centro educativo) <input name="originSchool"></label>
-        <label class="field">Fecha de nacimiento <input name="birthDate" type="date"></label>
+        <label class="field">Fecha de nacimiento <input name="birthDate" type="text" inputmode="numeric" placeholder="dd-mm-aaaa" maxlength="10"></label>
         <label class="field">Edad al ingreso <input name="age" type="number" min="10" max="25"></label>
-        <fieldset class="field"><legend>Carné de salud / adolescente</legend><div class="choice-row"><label><input type="radio" name="healthCard" value="Sí"> Sí</label><label><input type="radio" name="healthCard" value="No"> No</label><label><input type="radio" name="healthCard" value="Vencido"> Vencido</label></div><label class="subfield">Fecha de vencimiento <input name="healthCardExpiry" type="date"></label></fieldset>
+        <fieldset class="field"><legend>Carné de salud / adolescente</legend><div class="choice-row"><label><input type="radio" name="healthCard" value="Sí"> Sí</label><label><input type="radio" name="healthCard" value="No"> No</label><label><input type="radio" name="healthCard" value="Vencido"> Vencido</label></div><label class="subfield">Fecha de vencimiento <input name="healthCardExpiry" type="text" inputmode="numeric" placeholder="dd-mm-aaaa" maxlength="10"></label></fieldset>
         <fieldset class="field"><legend>Esquema de vacunación vigente</legend><div class="choice-row"><label><input type="radio" name="vaccination" value="Sí"> Sí</label><label><input type="radio" name="vaccination" value="No"> No</label><label><input type="radio" name="vaccination" value="Vencido"> Vencido</label></div><label class="subfield">Fecha / observación <input name="vaccinationDate" type="text"></label></fieldset>
         <label class="field">Domicilio (calle, número / manzana y solar / km) <input name="address" autocomplete="street-address"></label>
         <label class="field">Barrio <input name="neighborhood"></label>
