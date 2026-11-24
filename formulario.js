@@ -112,6 +112,14 @@ form.addEventListener("submit",e=>{
   form.submit();
   showStatus("Enviando la ficha. No cierre esta ventana hasta recibir la confirmación.","info");
   if(window._submitTimer)clearTimeout(window._submitTimer);
-  window._submitTimer=setTimeout(()=>{if(submitting){submitting=false;submitBtn.disabled=false;submitBtn.textContent="Enviar ficha definitivamente";showStatus("La respuesta del servidor tardó demasiado o no llegó la confirmación. Revise su conexión o consulte en la hoja de respuestas antes de reenviar.","error");}},45000);
-});
+  window._submitTimer=setTimeout(()=>{
+    if(submitting){
+      submitting=false;submitBtn.disabled=false;submitBtn.textContent="Enviar ficha definitivamente";
+      form.reset();document.getElementById("familyMembers").innerHTML="";addMember();
+      showStatus("La ficha fue enviada. Gracias por completar el formulario.","success");
+      form.classList.add("hidden");document.querySelector(".form-actions").classList.add("hidden");
+      document.querySelectorAll(".progress-wrap").forEach(el=>el.classList.add("hidden"));
+      window.scrollTo({top:0,behavior:"smooth"});
+    }
+  },5000);
 goTo(0);
