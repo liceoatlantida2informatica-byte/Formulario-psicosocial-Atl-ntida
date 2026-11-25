@@ -88,7 +88,7 @@ function onMessage(event){
   if(event.data.ok){
     form.reset();document.getElementById("familyMembers").innerHTML="";addMember();
     showStatus("La ficha fue recibida correctamente. Gracias por completar el formulario.","success");
-    form.classList.add("hidden");document.querySelector(".form-actions").classList.add("hidden");
+    form.classList.add("hidden");document.querySelector(".intro")?.classList.add("hidden");document.querySelector(".form-actions").classList.add("hidden");
     document.querySelectorAll(".progress-wrap").forEach(el=>el.classList.add("hidden"));
     window.scrollTo({top:0,behavior:"smooth"});
   }else showStatus(event.data.message||"No fue posible registrar la ficha. Comuníquese con el liceo.","error");
@@ -117,7 +117,7 @@ form.addEventListener("submit",e=>{
       submitting=false;submitBtn.disabled=false;submitBtn.textContent="Enviar ficha definitivamente";
       form.reset();document.getElementById("familyMembers").innerHTML="";addMember();
       showStatus("La ficha fue enviada. Gracias por completar el formulario.","success");
-      form.classList.add("hidden");document.querySelector(".form-actions").classList.add("hidden");
+      form.classList.add("hidden");document.querySelector(".intro")?.classList.add("hidden");document.querySelector(".form-actions").classList.add("hidden");
       document.querySelectorAll(".progress-wrap").forEach(el=>el.classList.add("hidden"));
       window.scrollTo({top:0,behavior:"smooth"});
     }
