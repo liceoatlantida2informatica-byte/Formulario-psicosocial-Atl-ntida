@@ -33,9 +33,9 @@ body {
 .brand-mark {
   display: grid;
   place-items: center;
-  flex: 0 0 64px;
-  width: 64px;
-  height: 64px;
+  flex: 0 0 80px;
+  width: 80px;
+  height: 80px;
   padding: 4px;
   background: #ffffff14;
   border: 2px solid #ffffff9c;
